@@ -1,5 +1,5 @@
-# Stage 1: Build the application
-FROM maven:3.9.6-eclipse-temurin-17 AS builder
+# Stage 1: Build the application with Java 21
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
 WORKDIR /app
 
@@ -7,9 +7,8 @@ COPY . .
 
 RUN ./mvnw clean package -DskipTests
 
-# Stage 2: Run the application
-FROM eclipse-temurin:21-jdk AS builder
-
+# Stage 2: Run the application with Java 21 runtime only
+FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
