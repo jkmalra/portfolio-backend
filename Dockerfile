@@ -8,7 +8,8 @@ COPY . .
 RUN ./mvnw clean package -DskipTests
 
 # Stage 2: Run the application
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:21-jdk AS builder
+
 
 WORKDIR /app
 
