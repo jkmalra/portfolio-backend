@@ -13,9 +13,11 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(@NonNull CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("http://127.0.0.1:5500", //for local
-                                        "https://jkmalra.github.io") //for github.io
+                registry.addMapping("/api/**")
+                        .allowedOrigins(
+                                "http://127.0.0.1:5500",               // for local development
+                                "https://jkmalra.github.io"           // for GitHub Pages (must be HTTPS)
+                        )
                         .allowedMethods("GET", "POST")
                         .allowedHeaders("*");
             }
